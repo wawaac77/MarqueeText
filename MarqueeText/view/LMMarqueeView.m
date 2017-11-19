@@ -17,6 +17,7 @@
 }
 
 @property (strong, nonatomic) UILabel *scrollLabel;
+@property (strong, nonatomic) NSTimer *scrollTimer;
 
 @end
 
@@ -75,7 +76,12 @@
     self.scrollLabel.text = _config.scrollTitle;
     //[self addTapGesture:_testLabel];
     [backgroundView addSubview:self.scrollLabel];
-    [self linearAnimation];
+    if (_config.scrollType == 2) {
+        [self addTimer];
+    } else {
+        [self linearAnimation];
+    }
+    
     
 }
 
@@ -148,5 +154,33 @@
     NSLog(@"did tap label");
 }
  */
+#pragma mark - Scroll begin & end
+- (void)beginScrolling {
+    
+}
+
+- (void)endScrolling {
+    
+}
+
+/** Timer */
+- (void)addTimer {
+    self.scrollTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(changeLabelPos) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:_scrollTimer forMode:NSRunLoopCommonModes];
+}
+
+- (void)changeLabelPos {
+    [UIView animateWithDuration:2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        //self.scrollLabel.frame = CGRectMake(label_x, label_y, width, height);
+        label_y += 50;
+    } completion:^(BOOL finished) {
+        self.scrollLabel.frame = CGRectMake(label_x, label_y, width, height);
+        if (label_y > _config.scrollInset.top + height) {
+            label_y = _config.scrollInset.top - height;
+        }
+        
+    }];
+    
+}
 
 @end
