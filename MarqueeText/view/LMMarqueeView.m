@@ -29,7 +29,8 @@
     if (self = [super init]) {
         _config = [self checkConfig:config]; //protect from exceed limitation
         
-        [self scrollAnimation]; //set config, and make it scroll
+        [self setupViews];
+        [self beginScrolling];
     }
     return self;
 }
@@ -56,10 +57,13 @@
     return config;
 }
 
-#pragma mark - type 0 & 1 scroll function
-- (void)scrollAnimation {
+#pragma mark - set views
+- (void)setupViews {
+    //self.backgroundColor = _config.scrollBackgroundColor;
+    //[self setBackgroundColor:_config.scrollBackgroundColor];
+    
     UIView *backgroundView = [[UIView alloc] initWithFrame:_config.frame];
-    backgroundView.backgroundColor = _config.scrollBackgroundColor;
+    backgroundView.backgroundColor = [UIColor clearColor];
     backgroundView.clipsToBounds = YES;
     [self addSubview:backgroundView];
     
@@ -86,18 +90,34 @@
   
     [backgroundView addSubview:self.scrollLabel];
     
-    if (_config.scrollType == 2 || _config.scrollType == 3) {
-        [self addTimer];
-    } else {
-        [self linearAnimation];
-    }
-    
-    
 }
 
-- (void)linearAnimation {
+#pragma mark - timer control scroll function
+/** Timer */
+- (void)addTimer {
+    if (_config.scrollType == 0 || _config.scrollType == 1) {
+        self.scrollTimer = [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(continiousAnimation) userInfo:nil repeats:NO];
+    } else {
+        self.scrollTimer = [NSTimer scheduledTimerWithTimeInterval:_config.scrollVelocity target:self selector:@selector(changeLabelPos) userInfo:nil repeats:YES];
+    }
+    
+    [[NSRunLoop mainRunLoop] addTimer:_scrollTimer forMode:NSRunLoopCommonModes];
+}
+
+/*
+- (void)startAnimation {
+    if (_config.scrollType == 0 || _config.scrollType == 1) {
+        [self continiousAnimation];
+    } else {
+        [self changeLabelPos];
+    }
+}
+*/
+
+/** type 0 & 1 scroll function */
+- (void)continiousAnimation {
     CGRect frame = _config.frame;
-   
+    
     [UIView animateWithDuration:_config.scrollVelocity delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         if (_config.scrollType == 0) {
             self.scrollLabel.frame = CGRectMake(label_x + width, label_y, width, height);
@@ -116,17 +136,11 @@
             self.scrollLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, width, height);
         }
         
-        [self linearAnimation];
+        [self continiousAnimation];
     }];
 }
 
-#pragma mark - type 2 & 3 scroll function
-/** Timer */
-- (void)addTimer {
-    self.scrollTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(changeLabelPos) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:_scrollTimer forMode:NSRunLoopCommonModes];
-}
-
+/** type 2 & 3 scroll function */
 - (void)changeLabelPos {
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         if (_config.scrollType == 2) {
@@ -162,26 +176,17 @@
 }
 
 #pragma mark - tap gesture
-/** tap gesture */
-/*
-- (void)addTapGesture:(id)target {
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:target action:@selector(didTap)];
-    self.userInteractionEnabled = YES;
-    [self addTapGesture:tap];
-}
-*/
-
 - (void)labelLongPressed {
     NSLog(@"did tap label");
 }
 
 #pragma mark - Scroll begin & end
 - (void)beginScrolling {
-    
+    [self addTimer];
 }
 
 - (void)endScrolling {
-    
+    [_scrollTimer invalidate];
 }
 
 

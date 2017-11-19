@@ -39,14 +39,14 @@
     config.scrollTitleColor = [UIColor blueColor];
     config.scrollBackgroundColor = [UIColor lightGrayColor];
     config.frame = CGRectMake(10, 40, [UIScreen mainScreen].bounds.size.width - 20, 40);
-    //config.scrollInset = UIEdgeInsetsMake(40, 10, 40, 10);
+    //config.scrollInset = UIEdgeInsetsMake(5, 5, 5, 5);
     //config.scrollSpace = 50;
     config.textAlignment = NSTextAlignmentRight;
     config.font = [UIFont systemFontOfSize:16];
     //config.autoWidth = NO;
     
     LMMarqueeView *marqueeView = [[LMMarqueeView alloc] initWithConfig:config];
-    //[marqueeView setFrame:CGRectMake(5, 50, 300, 60)];
+    marqueeView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:marqueeView];
     
     //MarqueeBanner1
@@ -71,7 +71,7 @@
     LMMarqueeConfig *config2 = [[LMMarqueeConfig alloc] init];
     config2.scrollTitle = @"hahahahahahahahahahahfkhfjkahfkjhsakshjksahfkhskafhahfkshjakfjfghjk,mnbvcxsdfkl;lmnbvcxfghjk,mnbvc";
     config2.scrollType = 2;
-    config2.scrollVelocity = 6;
+    config2.scrollVelocity = 2;
     config2.scrollTitleColor = [UIColor orangeColor];
     config2.scrollBackgroundColor = [UIColor yellowColor];
     config2.frame = CGRectMake(10, 240, [UIScreen mainScreen].bounds.size.width - 20, 40);
@@ -89,7 +89,7 @@
     LMMarqueeConfig *config3 = [[LMMarqueeConfig alloc] init];
     config3.scrollTitle = @"hahahahahahahahahahahfkhfjkahfkjhsakshjksahfkhskafhahfkshjakfjdfghjkllmnbvcxxcvbnm,.kjhgfdsasdfghjkloiuytrewscvbnm,;oiuytresxcvbnm,liuytreshahahahahahahahahahahfkhfjkahfkjhsakshjksahfkhskafhahfkshjakfjdfghjkllmnbvcxxcvbnm,.kjhgfdsasdfghjkloiuytrewscvbnm,;oiuytresxcvbnm,liuytreshahahahahahahahahahahfkhfjkahfkjhsakshjksahfkhskafhahfkshjakfjdfghjkllmnbvcxxcvbnm,.kjhgfdsasdfghjkloiuytrewscvbnm,;oiuytresxcvbnm,liuytres";
     config3.scrollType = 3;
-    config3.scrollVelocity = 6;
+    config3.scrollVelocity = 2;
     config3.scrollTitleColor = [UIColor blackColor];
     config3.scrollBackgroundColor = [UIColor redColor];
     config3.frame = CGRectMake(10, 340, [UIScreen mainScreen].bounds.size.width - 20, 40);;
