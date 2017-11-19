@@ -29,7 +29,4 @@
  */
 - (void) endScrolling;
 
-
-- (void)addTapGesture:(id)target;
-
 @end
