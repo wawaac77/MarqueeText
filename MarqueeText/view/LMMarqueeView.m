@@ -35,18 +35,18 @@
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-    _frame = frame; //is this okay?
+    _config.frame = frame; //is this okay?
 }
 
 #pragma mark - functions?? what to describe here?
 - (void)scrollAnimation {
-    UIView *bgView = [[UIView alloc] initWithFrame:_frame];
+    UIView *bgView = [[UIView alloc] initWithFrame:_config.frame];
     bgView.backgroundColor = [UIColor greenColor];
     [self addSubview:bgView];
 
     CGFloat width = [self textWidth:self.config.scrollTitle];
     self.testLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, width, 30)];
-    self.testLabel.backgroundColor = [UIColor brownColor];
+    self.testLabel.backgroundColor = _config.scrollBackgroundColor;
     self.testLabel.text = _config.scrollTitle;
     //[self addTapGesture:_testLabel];
     [bgView addSubview:self.testLabel];

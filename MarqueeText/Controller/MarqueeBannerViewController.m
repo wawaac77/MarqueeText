@@ -36,7 +36,8 @@
     config.scrollTitle = @"hahahahahahahahahahahfkhfjkahfkjhsakshjksahfkhskafhahfkshjakfj";
     config.scrollType = LeftToRightScrolling;
     //config.scrollVelocity = 8;
-    //config.scrollTitleColor = [UIColor blueColor];
+    config.scrollTitleColor = [UIColor blueColor];
+    config.scrollBackgroundColor = [UIColor greenColor];
     //config.scrollInset = 0; //what's this??
     //config.scrollSpace = 50;
     //config.textAlignment =
@@ -45,7 +46,6 @@
     
     LMMarqueeView *marqueeView1 = [[LMMarqueeView alloc] initWithConfig:config];
     [marqueeView1 setFrame:CGRectMake(5, 300, 300, 50)];
-    marqueeView1.scrollBackgroundColor = [UIColor yellowColor];
     [self.view addSubview:marqueeView1];
     
 }
