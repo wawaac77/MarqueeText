@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MarqueeBannerViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    MarqueeBannerViewController *marqueeVC = [[MarqueeBannerViewController alloc] init];
+    self.window.rootViewController = marqueeVC;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

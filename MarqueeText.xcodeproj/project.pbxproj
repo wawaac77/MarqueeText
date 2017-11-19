@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		789B26C61FBC68970023812F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 789B26C51FBC68970023812F /* AppDelegate.m */; };
-		789B26C91FBC68970023812F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 789B26C81FBC68970023812F /* ViewController.m */; };
 		789B26CC1FBC68970023812F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789B26CA1FBC68970023812F /* Main.storyboard */; };
 		789B26CE1FBC68970023812F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789B26CD1FBC68970023812F /* Assets.xcassets */; };
 		789B26D11FBC68970023812F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789B26CF1FBC68970023812F /* LaunchScreen.storyboard */; };
 		789B26D41FBC68970023812F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 789B26D31FBC68970023812F /* main.m */; };
 		789B26DE1FBC68970023812F /* MarqueeTextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 789B26DD1FBC68970023812F /* MarqueeTextTests.m */; };
 		789B26E91FBC68970023812F /* MarqueeTextUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 789B26E81FBC68970023812F /* MarqueeTextUITests.m */; };
+		78F154611FC0533200B86C52 /* MarqueeBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F1545D1FC0533200B86C52 /* MarqueeBannerViewController.m */; };
+		78F154621FC0533200B86C52 /* MarqueeBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F1545E1FC0533200B86C52 /* MarqueeBannerViewController.xib */; };
+		78F154631FC0533200B86C52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F154601FC0533200B86C52 /* ViewController.m */; };
+		78F154711FC059E200B86C52 /* LMMarqueeConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F154701FC059E200B86C52 /* LMMarqueeConfig.m */; };
+		78F154741FC07FE900B86C52 /* LMMarqueeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F154731FC07FE800B86C52 /* LMMarqueeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +42,6 @@
 		789B26C11FBC68970023812F /* MarqueeText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarqueeText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		789B26C41FBC68970023812F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		789B26C51FBC68970023812F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		789B26C71FBC68970023812F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		789B26C81FBC68970023812F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		789B26CB1FBC68970023812F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		789B26CD1FBC68970023812F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		789B26D01FBC68970023812F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,15 @@
 		789B26E41FBC68970023812F /* MarqueeTextUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarqueeTextUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		789B26E81FBC68970023812F /* MarqueeTextUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarqueeTextUITests.m; sourceTree = "<group>"; };
 		789B26EA1FBC68970023812F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78F1545C1FC0533200B86C52 /* MarqueeBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeBannerViewController.h; sourceTree = "<group>"; };
+		78F1545D1FC0533200B86C52 /* MarqueeBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeBannerViewController.m; sourceTree = "<group>"; };
+		78F1545E1FC0533200B86C52 /* MarqueeBannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarqueeBannerViewController.xib; sourceTree = "<group>"; };
+		78F1545F1FC0533200B86C52 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		78F154601FC0533200B86C52 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		78F1546F1FC059E200B86C52 /* LMMarqueeConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMMarqueeConfig.h; sourceTree = "<group>"; };
+		78F154701FC059E200B86C52 /* LMMarqueeConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMMarqueeConfig.m; sourceTree = "<group>"; };
+		78F154721FC07FE800B86C52 /* LMMarqueeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMMarqueeView.h; sourceTree = "<group>"; };
+		78F154731FC07FE800B86C52 /* LMMarqueeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMMarqueeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,13 +114,14 @@
 			children = (
 				789B26C41FBC68970023812F /* AppDelegate.h */,
 				789B26C51FBC68970023812F /* AppDelegate.m */,
-				789B26C71FBC68970023812F /* ViewController.h */,
-				789B26C81FBC68970023812F /* ViewController.m */,
 				789B26CA1FBC68970023812F /* Main.storyboard */,
 				789B26CD1FBC68970023812F /* Assets.xcassets */,
 				789B26CF1FBC68970023812F /* LaunchScreen.storyboard */,
 				789B26D21FBC68970023812F /* Info.plist */,
 				789B26D31FBC68970023812F /* main.m */,
+				78F154681FC053C000B86C52 /* Model */,
+				78F154641FC0535B00B86C52 /* View */,
+				78F1545B1FC0533200B86C52 /* Controller */,
 			);
 			path = MarqueeText;
 			sourceTree = "<group>";
@@ -130,6 +142,36 @@
 				789B26EA1FBC68970023812F /* Info.plist */,
 			);
 			path = MarqueeTextUITests;
+			sourceTree = "<group>";
+		};
+		78F1545B1FC0533200B86C52 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				78F1545C1FC0533200B86C52 /* MarqueeBannerViewController.h */,
+				78F1545D1FC0533200B86C52 /* MarqueeBannerViewController.m */,
+				78F1545E1FC0533200B86C52 /* MarqueeBannerViewController.xib */,
+				78F1545F1FC0533200B86C52 /* ViewController.h */,
+				78F154601FC0533200B86C52 /* ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		78F154641FC0535B00B86C52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				78F154721FC07FE800B86C52 /* LMMarqueeView.h */,
+				78F154731FC07FE800B86C52 /* LMMarqueeView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		78F154681FC053C000B86C52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78F1546F1FC059E200B86C52 /* LMMarqueeConfig.h */,
+				78F154701FC059E200B86C52 /* LMMarqueeConfig.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +282,7 @@
 			files = (
 				789B26D11FBC68970023812F /* LaunchScreen.storyboard in Resources */,
 				789B26CE1FBC68970023812F /* Assets.xcassets in Resources */,
+				78F154621FC0533200B86C52 /* MarqueeBannerViewController.xib in Resources */,
 				789B26CC1FBC68970023812F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,7 +308,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				789B26C91FBC68970023812F /* ViewController.m in Sources */,
+				78F154741FC07FE900B86C52 /* LMMarqueeView.m in Sources */,
+				78F154631FC0533200B86C52 /* ViewController.m in Sources */,
+				78F154611FC0533200B86C52 /* MarqueeBannerViewController.m in Sources */,
+				78F154711FC059E200B86C52 /* LMMarqueeConfig.m in Sources */,
 				789B26D41FBC68970023812F /* main.m in Sources */,
 				789B26C61FBC68970023812F /* AppDelegate.m in Sources */,
 			);
