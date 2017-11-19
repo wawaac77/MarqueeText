@@ -35,25 +35,25 @@
     LMMarqueeConfig *config = [[LMMarqueeConfig alloc] init];
     config.scrollTitle = @"hahahahahahahahahahahfkhfjkahfkjhsakshjksahfkhskafhahfkshjakfj";
     config.scrollType = 0;
-    //config.scrollVelocity = 8;
+    config.scrollVelocity = ;
     config.scrollTitleColor = [UIColor blueColor];
     config.scrollBackgroundColor = [UIColor greenColor];
-    config.frame = CGRectMake(5, 20, 300, 150);
-    //config.scrollInset = 0; //what's this??
+    config.frame = CGRectMake(5, 20, 300, 60);
+    config.scrollInset = UIEdgeInsetsMake(40, 10, 40, 10);
     //config.scrollSpace = 50;
     //config.textAlignment =
     config.font = [UIFont systemFontOfSize:16];
     //config.autoWidth = NO;
     
     LMMarqueeView *marqueeView = [[LMMarqueeView alloc] initWithConfig:config];
-    [marqueeView setFrame:CGRectMake(5, 20, 300, 60)];
+    //[marqueeView setFrame:CGRectMake(5, 50, 300, 60)];
     [self.view addSubview:marqueeView];
     
     //MarqueeBanner2
     LMMarqueeConfig *config1 = [[LMMarqueeConfig alloc] init];
     config1.scrollTitle = @"hahahahahahahahahahahfkhfjkahfkjhsakshjksahfkhskafhahfkshjakfj";
     config1.scrollType = 1;
-    //config.scrollVelocity = 8;
+    config1.scrollVelocity = 6;
     config1.scrollTitleColor = [UIColor yellowColor];
     config1.scrollBackgroundColor = [UIColor greenColor];
     config1.frame = CGRectMake(5, 170, 300, 60);
@@ -64,7 +64,7 @@
     //config1.autoWidth = NO;
     
     LMMarqueeView *marqueeView1 = [[LMMarqueeView alloc] initWithConfig:config1];
-    [marqueeView1 setFrame:CGRectMake(5, 170, 300, 150)];
+    //[marqueeView1 setFrame:CGRectMake(5, 170, 300, 150)];
     [self.view addSubview:marqueeView1];
     
 }

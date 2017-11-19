@@ -9,9 +9,14 @@
 
 #import "LMMarqueeView.h"
 
-@interface LMMarqueeView ()
+@interface LMMarqueeView () {
+    CGFloat width;
+    CGFloat height;
+    CGFloat label_x;
+    CGFloat label_y;
+}
 
-@property (strong, nonatomic) UILabel *testLabel;
+@property (strong, nonatomic) UILabel *scrollLabel;
 
 @end
 
@@ -21,6 +26,12 @@
 - (instancetype)initWithConfig:(LMMarqueeConfig *)config {
     if (self = [super init]) {
         _config = config;
+        if (_config.scrollVelocity < 0) {
+            _config.scrollVelocity = 0;
+        } else if (_config.scrollVelocity > 10) {
+            _config.scrollVelocity = 10;
+        }
+        NSLog(@"initWithConfig _config.x %f", config.frame.origin.y);
         [self scrollAnimation]; //set config, and make it scroll
     }
     return self;
@@ -36,27 +47,34 @@
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
     _config.frame = frame; //is this okay?
+    NSLog(@"origin.y in setFrame %f", _config.frame.origin.y);
 }
 
 #pragma mark - functions?? what to describe here?
 - (void)scrollAnimation {
-    /*
-    UIView *bgView = [[UIView alloc] initWithFrame:_config.frame];
-    bgView.backgroundColor = [UIColor yellowColor];
-    [self addSubview:bgView];
-
-     */
-    self.backgroundColor = _config.scrollBackgroundColor;
     
-    CGFloat width = [self textWidth:self.config.scrollTitle];
-    self.testLabel = [[UILabel alloc] initWithFrame:_config.frame];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:_config.frame];
+    backgroundView.backgroundColor = _config.scrollBackgroundColor;
+    [self addSubview:backgroundView];
+
+    //self.backgroundColor = _config.scrollBackgroundColor;
+    
+    //CGFloat width = [self textWidth:self.config.scrollTitle];
+    label_x = _config.scrollInset.left;
+    label_y = _config.scrollInset.top;
+    width = _config.frame.size.width - _config.scrollInset.left - _config.scrollInset.right;
+    height = _config.frame.size.height - _config.scrollInset.top - _config.scrollInset.bottom;
+    
+    self.scrollLabel = [[UILabel alloc] initWithFrame:CGRectMake(_config.scrollInset.left, _config.scrollInset.top, width, height)];
     //self.testLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, width, 30)];
-    self.testLabel.font = _config.font;
-    self.testLabel.backgroundColor = [UIColor clearColor];
-    self.testLabel.textColor = _config.scrollTitleColor;
-    self.testLabel.text = _config.scrollTitle;
+    self.scrollLabel.font = _config.font;
+    self.scrollLabel.numberOfLines = 0;
+    self.scrollLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.scrollLabel.backgroundColor = [UIColor clearColor];
+    self.scrollLabel.textColor = _config.scrollTitleColor;
+    self.scrollLabel.text = _config.scrollTitle;
     //[self addTapGesture:_testLabel];
-    [self addSubview:self.testLabel];
+    [backgroundView addSubview:self.scrollLabel];
     [self linearAnimation];
     
 }
@@ -64,29 +82,48 @@
 - (void)linearAnimation {
     //CGRect frame = self.testLabel.frame;
     CGRect frame = _config.frame;
-    //here pass scroll velocity
-    [UIView animateWithDuration:10 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+   
+    [UIView animateWithDuration:_config.scrollVelocity delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         if (_config.scrollType == 0) {
-            self.testLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+            self.scrollLabel.frame = CGRectMake(label_x + width, label_y, width, height);
         } else if (_config.scrollType == 1) {
-            self.testLabel.frame = CGRectMake(frame.origin.x, frame.size.height, frame.size.width, frame.size.height);
+            self.scrollLabel.frame = CGRectMake(label_x, label_y + height, width, height);
         } else {
-            self.testLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+            self.scrollLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, width, height);
         }
+        
+        /*
+        if (_config.scrollType == 0) {
+            self.scrollLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+        } else if (_config.scrollType == 1) {
+            self.scrollLabel.frame = CGRectMake(frame.origin.x, frame.size.height, frame.size.width, frame.size.height);
+        } else {
+            self.scrollLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+        }
+        */
         
     } completion:^(BOOL finished) {
         //CGRect mainRect = [[UIScreen mainScreen] bounds];
+        if (_config.scrollType == 0) {
+            self.scrollLabel.frame = CGRectMake(label_x - width, label_y, width, height);
+        } else if (_config.scrollType == 1) {
+            self.scrollLabel.frame = CGRectMake(label_x, label_y - height, width, height);
+        } else {
+            self.scrollLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, width, height);
+        }
+        
+        /*
         CGRect mainRect = _config.frame;
 
         CGFloat width = [self textWidth:_config.scrollTitle];
         if (_config.scrollType == 0) {
-            self.testLabel.frame = CGRectMake(mainRect.size.width, 60, width, frame.size.height);
+            self.scrollLabel.frame = CGRectMake(frame.size.width, frame.origin.y, width, frame.size.height);
         } else if (_config.scrollType == 1) {
-            self.testLabel.frame = CGRectMake(mainRect.origin.x, -mainRect.size.height, width, frame.size.height);
-            NSLog(@"mainRect.origin.x %f", mainRect.origin.x);
+            self.scrollLabel.frame = CGRectMake(frame.origin.x, -frame.size.height, width, frame.size.height);
         } else {
-            self.testLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+            self.scrollLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
         }
+         */
         
         [self linearAnimation];
     }];
