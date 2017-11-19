@@ -58,11 +58,25 @@
     CGRect frame = self.testLabel.frame;
     //here pass scroll velocity
     [UIView animateWithDuration:10 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-        self.testLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+        if (_config.scrollType == 0) {
+            self.testLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+        } else if (_config.scrollType == 1) {
+            self.testLabel.frame = CGRectMake(frame.origin.x, -frame.size.height, frame.size.width, frame.size.height);
+        } else {
+            self.testLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+        }
+        
     } completion:^(BOOL finished) {
         CGRect mainRect = [[UIScreen mainScreen] bounds];
         CGFloat width = [self textWidth:_config.scrollTitle];
-        self.testLabel.frame = CGRectMake(mainRect.size.width, 60, width, 30);
+        if (_config.scrollType == 0) {
+            self.testLabel.frame = CGRectMake(mainRect.size.width, 60, width, 30);
+        } else if (_config.scrollType == 1) {
+            self.testLabel.frame = CGRectMake(20, mainRect.size.height, width, 30);
+        } else {
+            self.testLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, frame.size.width, frame.size.height);
+        }
+        
         [self linearAnimation];
     }];
 }

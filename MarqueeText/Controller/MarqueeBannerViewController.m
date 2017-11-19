@@ -34,7 +34,7 @@
 - (void)addScrollBanner {
     LMMarqueeConfig *config = [[LMMarqueeConfig alloc] init];
     config.scrollTitle = @"hahahahahahahahahahahfkhfjkahfkjhsakshjksahfkhskafhahfkshjakfj";
-    config.scrollType = LeftToRightScrolling;
+    config.scrollType = 0;
     //config.scrollVelocity = 8;
     config.scrollTitleColor = [UIColor blueColor];
     config.scrollBackgroundColor = [UIColor greenColor];
@@ -44,8 +44,25 @@
     //config.font = [UIFont systemFontOfSize:14];
     //config.autoWidth = NO;
     
-    LMMarqueeView *marqueeView1 = [[LMMarqueeView alloc] initWithConfig:config];
-    [marqueeView1 setFrame:CGRectMake(5, 300, 300, 50)];
+    LMMarqueeView *marqueeView = [[LMMarqueeView alloc] initWithConfig:config];
+    [marqueeView setFrame:CGRectMake(5, 20, 300, 150)];
+    [self.view addSubview:marqueeView];
+    
+    //MarqueeBanner2
+    LMMarqueeConfig *config1 = [[LMMarqueeConfig alloc] init];
+    config1.scrollTitle = @"hahahahahahahahahahahfkhfjkahfkjhsakshjksahfkhskafhahfkshjakfj";
+    config1.scrollType = 1;
+    //config.scrollVelocity = 8;
+    config1.scrollTitleColor = [UIColor yellowColor];
+    config1.scrollBackgroundColor = [UIColor greenColor];
+    //config1.scrollInset = 0; //what's this??
+    //config1.scrollSpace = 50;
+    //config1.textAlignment =
+    //config1.font = [UIFont systemFontOfSize:14];
+    //config1.autoWidth = NO;
+    
+    LMMarqueeView *marqueeView1 = [[LMMarqueeView alloc] initWithConfig:config1];
+    [marqueeView1 setFrame:CGRectMake(5, 170, 300, 150)];
     [self.view addSubview:marqueeView1];
     
 }
