@@ -63,7 +63,8 @@
     //[self setBackgroundColor:_config.scrollBackgroundColor];
     
     UIView *backgroundView = [[UIView alloc] initWithFrame:_config.frame];
-    backgroundView.backgroundColor = [UIColor clearColor];
+    //backgroundView.backgroundColor = [UIColor clearColor];
+    backgroundView.backgroundColor = _config.scrollBackgroundColor;
     backgroundView.clipsToBounds = YES;
     [self addSubview:backgroundView];
     
