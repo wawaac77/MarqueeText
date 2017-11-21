@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="oclint-0.13"><file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/Controller/MarqueeBannerViewController.m">
+<violation begincolumn="1" endcolumn="158" beginline="36" endline="36" priority="5" rule="long line" ruleset="size" >
+Line with 158 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/Controller/MarqueeBannerViewController.m">
+<violation begincolumn="1" endcolumn="157" beginline="54" endline="54" priority="5" rule="long line" ruleset="size" >
+Line with 157 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/Controller/MarqueeBannerViewController.m">
+<violation begincolumn="1" endcolumn="128" beginline="72" endline="72" priority="5" rule="long line" ruleset="size" >
+Line with 128 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/Controller/MarqueeBannerViewController.m">
+<violation begincolumn="1" endcolumn="447" beginline="90" endline="90" priority="5" rule="long line" ruleset="size" >
+Line with 447 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/Controller/MarqueeBannerViewController.m">
+<violation begincolumn="1" endcolumn="1" beginline="34" endline="105" priority="5" rule="long method" ruleset="size" >
+Method with 72 lines exceeds limit of 50
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/Controller/MarqueeBannerViewController.m">
+<violation begincolumn="1" endcolumn="1" beginline="34" endline="105" priority="3" rule="high ncss method" ruleset="size" >
+Method of 46 non-commenting source statements exceeds limit of 30
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="45" endcolumn="5" beginline="39" endline="41" priority="3" rule="empty if statement" ruleset="empty" >
+
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="1" endcolumn="132" beginline="78" endline="78" priority="5" rule="long line" ruleset="size" >
+Line with 132 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="1" endcolumn="140" beginline="88" endline="88" priority="5" rule="long line" ruleset="size" >
+Line with 140 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="1" endcolumn="146" beginline="100" endline="100" priority="5" rule="long line" ruleset="size" >
+Line with 146 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="1" endcolumn="163" beginline="102" endline="102" priority="5" rule="long line" ruleset="size" >
+Line with 163 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="1" endcolumn="117" beginline="122" endline="122" priority="5" rule="long line" ruleset="size" >
+Line with 117 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="1" endcolumn="181" beginline="169" endline="169" priority="5" rule="long line" ruleset="size" >
+Line with 181 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="1" endcolumn="184" beginline="175" endline="175" priority="5" rule="long line" ruleset="size" >
+Line with 184 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="5" endcolumn="5" beginline="71" endline="71" priority="3" rule="ivar assignment outside accessors or init" ruleset="convention" >
+
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="5" endcolumn="5" beginline="72" endline="72" priority="3" rule="ivar assignment outside accessors or init" ruleset="convention" >
+
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="5" endcolumn="5" beginline="73" endline="73" priority="3" rule="ivar assignment outside accessors or init" ruleset="convention" >
+
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="5" endcolumn="5" beginline="75" endline="75" priority="3" rule="ivar assignment outside accessors or init" ruleset="convention" >
+
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="13" endcolumn="13" beginline="148" endline="148" priority="3" rule="ivar assignment outside accessors or init" ruleset="convention" >
+
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="13" endcolumn="13" beginline="150" endline="150" priority="3" rule="ivar assignment outside accessors or init" ruleset="convention" >
+
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="13" endcolumn="13" beginline="155" endline="155" priority="3" rule="ivar assignment outside accessors or init" ruleset="convention" >
+
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="13" endcolumn="13" beginline="159" endline="159" priority="3" rule="ivar assignment outside accessors or init" ruleset="convention" >
+
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/View/LMMarqueeView.m">
+<violation begincolumn="31" endcolumn="39" beginline="168" endline="168" priority="5" rule="unused method parameter" ruleset="unused" >
+The parameter 'height' is unused.
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/Controller/ViewController.m">
+<violation begincolumn="1" endcolumn="110" beginline="23" endline="23" priority="5" rule="long line" ruleset="size" >
+Line with 110 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/AppDelegate.m">
+<violation begincolumn="1" endcolumn="110" beginline="19" endline="19" priority="5" rule="long line" ruleset="size" >
+Line with 110 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/AppDelegate.m">
+<violation begincolumn="1" endcolumn="281" beginline="32" endline="32" priority="5" rule="long line" ruleset="size" >
+Line with 281 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/AppDelegate.m">
+<violation begincolumn="1" endcolumn="155" beginline="33" endline="33" priority="5" rule="long line" ruleset="size" >
+Line with 155 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/AppDelegate.m">
+<violation begincolumn="1" endcolumn="214" beginline="38" endline="38" priority="5" rule="long line" ruleset="size" >
+Line with 214 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/AppDelegate.m">
+<violation begincolumn="1" endcolumn="137" beginline="39" endline="39" priority="5" rule="long line" ruleset="size" >
+Line with 137 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/AppDelegate.m">
+<violation begincolumn="1" endcolumn="151" beginline="44" endline="44" priority="5" rule="long line" ruleset="size" >
+Line with 151 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/AppDelegate.m">
+<violation begincolumn="1" endcolumn="190" beginline="49" endline="49" priority="5" rule="long line" ruleset="size" >
+Line with 190 characters exceeds limit of 100
+</violation>
+</file>
+
+<file name="/Users/alicejin/Desktop/Github/MarqueeText/MarqueeText/MarqueeText/AppDelegate.m">
+<violation begincolumn="1" endcolumn="124" beginline="54" endline="54" priority="5" rule="long line" ruleset="size" >
+Line with 124 characters exceeds limit of 100
+</violation>
+</file>
+
+</pmd>

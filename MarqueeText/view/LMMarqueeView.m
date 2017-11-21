@@ -9,15 +9,19 @@
 
 #import "LMMarqueeView.h"
 
-@interface LMMarqueeView () {
+@interface LMMarqueeView () <UIGestureRecognizerDelegate> {
     CGFloat width;
     CGFloat height;
     CGFloat label_x;
     CGFloat label_y;
+    CGFloat label_width;
+    CGFloat scroll_width;
 }
 
 @property (strong, nonatomic) NSMutableArray *labelArray;
 @property (strong, nonatomic) UILabel *scrollLabel;
+@property (strong, nonatomic) UIView *scrollView;
+@property (strong, nonatomic) UIView *scrollView1;
 @property (strong, nonatomic) NSTimer *scrollTimer;
 
 @end
@@ -28,7 +32,6 @@
 - (instancetype)initWithConfig:(LMMarqueeConfig *)config {
     if (self = [super init]) {
         _config = [self checkConfig:config]; //protect from exceed limitation
-        
         [self setupViews];
         [self beginScrolling];
     }
@@ -48,7 +51,7 @@
 }
 
 #pragma mark - check config
-- (LMMarqueeConfig *)checkConfig : (LMMarqueeConfig *)config {
+- (LMMarqueeConfig *)checkConfig:(LMMarqueeConfig *)config {
     if (config.scrollVelocity < 0) {
         config.scrollVelocity = 0;
     } else if (_config.scrollVelocity > 10) {
@@ -59,38 +62,78 @@
 
 #pragma mark - set views
 - (void)setupViews {
-    //self.backgroundColor = _config.scrollBackgroundColor;
-    //[self setBackgroundColor:_config.scrollBackgroundColor];
     
     UIView *backgroundView = [[UIView alloc] initWithFrame:_config.frame];
-    //backgroundView.backgroundColor = [UIColor clearColor];
     backgroundView.backgroundColor = _config.scrollBackgroundColor;
     backgroundView.clipsToBounds = YES;
     [self addSubview:backgroundView];
     
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(labelLongPressed)];
+    longPress.delegate = self;
+    self.userInteractionEnabled = YES;
+    backgroundView.userInteractionEnabled = YES;
+    [backgroundView addGestureRecognizer:longPress];
+    
+    /** size calculation*/
     label_x = _config.scrollInset.left;
     label_y = _config.scrollInset.top;
     width = _config.frame.size.width - _config.scrollInset.left - _config.scrollInset.right;
     //height = _config.frame.size.height - _config.scrollInset.top - _config.scrollInset.bottom;
     height = [self textHeightWithText:_config.scrollTitle width:width];
-    NSLog(@"height %f", height);
+    label_width = [self textWidthWithText:_config.scrollTitle height:_config.font.lineHeight];
     
-    self.scrollLabel = [[UILabel alloc] initWithFrame:CGRectMake(_config.scrollInset.left, _config.scrollInset.top, width, height)];
-    self.scrollLabel.numberOfLines = 0;
-    self.scrollLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.scrollLabel.backgroundColor = [UIColor clearColor];
-    self.scrollLabel.textColor = _config.scrollTitleColor;
-    self.scrollLabel.font = _config.font;
-    self.scrollLabel.textAlignment = _config.textAlignment;
-    self.scrollLabel.text = _config.scrollTitle;
+    /** scrollView */
+    int n = [UIScreen mainScreen].bounds.size.width / (label_width + _config.scrollSpace);
+    scroll_width = (label_width + _config.scrollSpace) * (n + 1);
     
-    /** add tap gesture */
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(labelLongPressed)];
-    self.userInteractionEnabled = YES;
-    [self.scrollLabel addGestureRecognizer:longPress];
-  
-    [backgroundView addSubview:self.scrollLabel];
+    self.scrollView = [[UIView alloc] initWithFrame:CGRectMake(label_x, label_y, scroll_width, height)];
+    _scrollView.backgroundColor = [UIColor clearColor];
+    _scrollView.clipsToBounds = YES;
+
+    self.scrollView1 = [[UIView alloc] initWithFrame:CGRectMake(label_x - scroll_width, label_y, scroll_width, height)];
+    _scrollView1.backgroundColor = [UIColor clearColor];
+    _scrollView1.clipsToBounds = YES;
     
+    for (int i = 0; i <= n; i ++) {
+        for (int j = 0; j < 2; j ++) {
+            UILabel *scrollLabel = [[UILabel alloc] initWithFrame:CGRectMake(i * (label_width + _config.scrollSpace), 0, label_width, height)];
+            scrollLabel.numberOfLines = 0;
+            if (_config.autoWidth == YES) {
+                scrollLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            }
+            scrollLabel.backgroundColor = [UIColor clearColor];
+            scrollLabel.textColor = _config.scrollTitleColor;
+            scrollLabel.font = _config.font;
+            scrollLabel.textAlignment = _config.textAlignment;
+            scrollLabel.text = _config.scrollTitle;
+            
+            if (j == 0) {
+                [_scrollView addSubview:scrollLabel];
+            } else {
+                [_scrollView1 addSubview:scrollLabel];
+            }
+        }
+    }
+    
+    /** scroll label*/
+    self.scrollLabel = [[UILabel alloc] initWithFrame:_config.frame];
+    _scrollLabel.numberOfLines = 0;
+    if (_config.autoWidth == YES) {
+        _scrollLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    }
+    _scrollLabel.backgroundColor = [UIColor clearColor];
+    _scrollLabel.textColor = _config.scrollTitleColor;
+    _scrollLabel.font = _config.font;
+    _scrollLabel.textAlignment = _config.textAlignment;
+    _scrollLabel.text = _config.scrollTitle;
+    
+    if (_config.scrollType == 0) {
+        [backgroundView addSubview:_scrollView];
+        [backgroundView addSubview:_scrollView1];
+    } else {
+        [backgroundView addSubview:_scrollLabel];
+    }
+
 }
 
 #pragma mark - timer control scroll function
@@ -105,36 +148,23 @@
     [[NSRunLoop mainRunLoop] addTimer:_scrollTimer forMode:NSRunLoopCommonModes];
 }
 
-/*
-- (void)startAnimation {
-    if (_config.scrollType == 0 || _config.scrollType == 1) {
-        [self continiousAnimation];
-    } else {
-        [self changeLabelPos];
-    }
-}
-*/
-
 /** type 0 & 1 scroll function */
 - (void)continiousAnimation {
-    CGRect frame = _config.frame;
     
     [UIView animateWithDuration:_config.scrollVelocity delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         if (_config.scrollType == 0) {
-            self.scrollLabel.frame = CGRectMake(label_x + width, label_y, width, height);
+            self.scrollView.frame = CGRectMake(label_x + scroll_width, label_y, scroll_width, height);
+            self.scrollView1.frame = CGRectMake(label_x, label_y, scroll_width, height);
         } else if (_config.scrollType == 1) {
             self.scrollLabel.frame = CGRectMake(label_x, label_y + height, width, height);
-        } else {
-            self.scrollLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, width, height);
         }
         
     } completion:^(BOOL finished) {
         if (_config.scrollType == 0) {
-            self.scrollLabel.frame = CGRectMake(label_x - width, label_y, width, height);
+            self.scrollView.frame = CGRectMake(label_x, label_y, scroll_width, height);
+            self.scrollView1.frame = CGRectMake(label_x - scroll_width, label_y, scroll_width, height);
         } else if (_config.scrollType == 1) {
             self.scrollLabel.frame = CGRectMake(label_x, label_y - height, width, height);
-        } else {
-            self.scrollLabel.frame = CGRectMake(-frame.size.width, frame.origin.y, width, height);
         }
         
         [self continiousAnimation];
@@ -179,6 +209,12 @@
 #pragma mark - tap gesture
 - (void)labelLongPressed {
     NSLog(@"did tap label");
+}
+
+- (void)addTapGesture:(id)target sel:(SEL)selector {
+    self.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:target action:selector];
+    [self addGestureRecognizer:tap];
 }
 
 #pragma mark - Scroll begin & end
